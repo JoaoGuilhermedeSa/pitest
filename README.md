@@ -53,3 +53,21 @@ mvn org.pitest:pitest-maven:mutationCoverage
 ```
 
 After the execution, the mutation testing report will be available in the `target/pit-reports` directory. You can open the `index.html` file in your browser to view the report.
+
+## Working with Versions
+
+This project is configured with two Maven profiles to manage two different versions of the `Calculator` class and its tests: `original` and `modified`.
+
+### Building a Specific Version
+
+*   **Original Version (Default):** This profile is active by default. To build this version, run:
+    ```bash
+    mvn clean install
+    ```
+
+*   **Modified Version:** To build the modified version, activate the `modified` profile:
+    ```bash
+    mvn clean install -P modified
+    ```
+
+Pitest will automatically run during the `install` phase for whichever profile is active. The reports will be generated in the `target/pit-reports` directory, allowing you to compare the mutation coverage between the two versions.
