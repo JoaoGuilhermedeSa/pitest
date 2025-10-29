@@ -10,8 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
@@ -29,7 +29,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.15.0</version>
+                <version>1.21.0</version>
                 <executions>
                     <execution>
                         <id>pitest</id>
@@ -56,57 +56,6 @@
                     <timeoutConstant>4000</timeoutConstant>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${source.directory}</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>add-test-source</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>add-test-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${test.source.directory}</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>original</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <source.directory>src/main/java-original</source.directory>
-                <test.source.directory>src/test/java-original</test.source.directory>
-            </properties>
-        </profile>
-        <profile>
-            <id>modified</id>
-            <properties>
-                <source.directory>src/main/java-modified</source.directory>
-                <test.source.directory>src/test/java-modified</test.source.directory>
-            </properties>
-        </profile>
-    </profiles>
 </project>
