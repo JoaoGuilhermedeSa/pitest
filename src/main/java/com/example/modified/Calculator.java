@@ -43,7 +43,6 @@ public class Calculator {
 		}
 	}
 
-	// This method is way more simpler, allowing less surviving mutants
 	public boolean isPrime(int n) {
 		if (n <= 1) {
 			return false;
